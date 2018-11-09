@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="sandbox sandbox-correct-pronounciation">
+  <h1 class="heading heading-correct-pronounciation">
+    Random Topic Generation
+    <em>Pub/Sub System</em>
+  </h1>
+</div>
+  <div class = "container">
+    <form class="form-default">
+      <div class = "pub-sub-group">
+        <div class = "pub-btn" style="padding: 10px;">
+          <button id="publish" class = "btn btn-default" type = "submit" >
+            Create Publisher
+          </button>
+        </div>
+        <div class = "sub-btn" style="padding: 10px;">
+          <button id="subscribe" class = "btn btn-default" type = "submit" >
+            Create Subscriber
+          </button>
+        </div>
+      </div>
+      <div class = "pub-sub-group">
+        <div class = "pubs-created-lbl" style="padding: 10px;">
+          <button id="pubs-created" class = "btn btn-lbl">
+            <!-- {{ pubs_created }} -->
+            pubs_created
+          </button>
+        </div>
+        <div class = "subs-created-lbl" style="padding: 10px;">
+          <button id="subs-created" class = "btn btn-lbl">
+            <!-- {{ subs_created }} -->
+            subs_created
+          </button>
+        </div>
+      </div>
+      <div style="align-self: center; text-align:center;">
+        <div class = "notify-btn">
+          <button id="notify" class = "btn btn-default" type = "submit" >
+            Notify
+          </button>
+        </div>
+        <div id="topicListDiv" name = "topicList">
+          <ul class = "list-group">
+            {% for topic in topicsList %}
+              <li class = "list-group-item">{{ topic }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
