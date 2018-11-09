@@ -9,7 +9,10 @@
     <style>
 
     body{
-      background: #202a3f;
+      background: rgb(74, 76, 78);
+    }
+    navbar{
+      background: #00AAA0;
     }
     .sandbox-correct-pronounciation {
       padding: 10em 0 10em 0;
@@ -21,18 +24,24 @@
     }
     .btn-default{
       font-size: 20px;
-      background: rgb(163, 242, 245);
+      background: rgb(41, 111, 168);
+      color: #eae4ee;
+      font-family: 'Times New Roman', Times, serif;
       height: 50px;
-      width: 300px;
+      width: 350px;
       }
     .btn-lbl{
       font-size: 20px;
-      background: #202a3f;
-      color: rgb(163, 242, 245);
+      font-family: 'Times New Roman', Times, serif;
+      background: rgb(74, 76, 78);
+      color: #FCF4D9;
       height: 50px;
-      width: 300px;
+      width: 350px;
       pointer-events: none;
       cursor: not-allowed;
+      white-space: normal;
+      text-align: left;
+      padding: 0 0 4em 0;
     }
     .form-control{
       padding: 20px;
@@ -103,4 +112,34 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 crossorigin="anonymous"></script>
+<script>
+
+  $("#subscribe").click(function(event) {
+    $.ajax({
+      data : {
+      },
+      type : 'POST',
+      url: '/subscribe',
+      success: function(data) {
+           $("body").load("/subscribe");
+     }
+    });
+    event.preventDefault();
+  });
+</script>
+<script>
+
+  $("#publish").click(function(event) {
+    $.ajax({
+      data : {
+      },
+      type : 'POST',
+      url: '/publish',
+      success: function(data) {
+           $("body").load("/publish");
+     }
+    });
+    event.preventDefault();
+  });
+  </script>
 </html>

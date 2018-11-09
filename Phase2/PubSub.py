@@ -58,19 +58,23 @@ class Publisher:
         pub_sub_system.receive_and_notify(self,topic)  
     
 class Test:
-    def subscription_generator(self, val, pub_sub_system):
+    subCount = 1
+    pubCount = 1
+    def subscription_generator(self, pub_sub_system):
+        self.subCount = self.subCount + 0.5
         topics = ['TECHNOLOGY', 'SPORTS', 'BUSINESS', 'POLITICS', 'FASHION']
-        rand_s = random.randint(0,4)
+        rand_s = random.randint(0,4) 
         rand = random.randint(0,4)
         pub_sub_system.add_topic(topics[rand])
-        s = Subscriber('S' + str(val))
+        s = Subscriber('S' + str(int(self.subCount)))
         res = 'Subscriber ' + str(s.name) + ' created and subscribed to topic '+ str(topics[rand])
         pub_sub_system.register_subscribers(s,topics[rand])
         return res
 
-    def publisher_generator(self, val, pub_sub_system):
+    def publisher_generator(self, pub_sub_system):
+        self.pubCount = self.pubCount + 0.5
         topics = ['TECHNOLOGY', 'SPORTS', 'BUSINESS', 'POLITICS', 'FASHION']
-        p = Publisher('p' + str(val))
+        p = Publisher('p' + str(int(self.pubCount)))
         rand = random.randint(0,4)
         pub_sub_system.register_publishers(p,topics[rand])
         res = 'Publisher ' + str(p.name) + ' created for topic '+ str(topics[rand])
@@ -89,13 +93,13 @@ class Test:
         print(rand_p)
         publishers[rand_p].publish(pub_sub_system, topics[rand])
 
-    def myMain(self):
-        pub_sub_system = PubSubSystem()
-        i = 1
-        while(i != 10):
-            res = self.subscription_generator(i, pub_sub_system)
-            res_p = self.publisher_generator(i, pub_sub_system)
-            i = i + 1
-            print(res)
-            print(res_p)
-        self.notify(pub_sub_system)
+    # def myMain(self):
+    #     pub_sub_system = PubSubSystem()
+    #     i = 1
+    #     while(i != 10):
+    #         res = self.subscription_generator(i, pub_sub_system)
+    #         res_p = self.publisher_generator(i, pub_sub_system)
+    #         i = i + 1
+    #         print(res)
+    #         print(res_p)
+    #     self.notify(pub_sub_system)
