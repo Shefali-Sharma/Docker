@@ -1,12 +1,10 @@
 import random
 
 class PubSubSystem:
-    def __init__(self):
-#         self.topics = dict()
-        self.publishers = {}
-        self.subscribers = {}
-        self.topics = {}
-        self.topic_list = set()
+    publishers = {}
+    subscribers = {}
+    topics = {}
+    topic_list = set()
     
     def register_subscribers(self,sub,t):
         if sub in self.subscribers:
@@ -42,10 +40,6 @@ class PubSubSystem:
         for val in self.topics[topic]:
             val.notify(publisher,topic)
 
-
-# In[294]:
-
-
 class Subscriber:
     def __init__(self, name):
         self.name = name
@@ -64,7 +58,7 @@ class Publisher:
         pub_sub_system.receive_and_notify(self,topic)  
     
 class Test:
-    def subscription_generator(val, pub_sub_system):
+    def subscription_generator(self, val, pub_sub_system):
         topics = ['TECHNOLOGY', 'SPORTS', 'BUSINESS', 'POLITICS', 'FASHION']
         rand_s = random.randint(0,4)
         rand = random.randint(0,4)
@@ -74,7 +68,7 @@ class Test:
         pub_sub_system.register_subscribers(s,topics[rand])
         return res
 
-    def publisher_generator(val, pub_sub_system):
+    def publisher_generator(self, val, pub_sub_system):
         topics = ['TECHNOLOGY', 'SPORTS', 'BUSINESS', 'POLITICS', 'FASHION']
         p = Publisher('p' + str(val))
         rand = random.randint(0,4)
@@ -82,7 +76,7 @@ class Test:
         res = 'Publisher ' + str(p.name) + ' created for topic '+ str(topics[rand])
         return res
 
-    def notify(pub_sub_system):
+    def notify(self, pub_sub_system):
         topics = []
         for t in pub_sub_system.topic_list:
             topics.append(t)
@@ -94,15 +88,14 @@ class Test:
         rand_p = random.randint(0,len(publishers) - 1)
         print(rand_p)
         publishers[rand_p].publish(pub_sub_system, topics[rand])
-`
 
-    def myMain():
+    def myMain(self):
         pub_sub_system = PubSubSystem()
         i = 1
         while(i != 10):
-            res = subscription_generator(i,pub_sub_system)
-            res_p = publisher_generator(i,pub_sub_system)
+            res = self.subscription_generator(i, pub_sub_system)
+            res_p = self.publisher_generator(i, pub_sub_system)
             i = i + 1
             print(res)
             print(res_p)
-        notify(pub_sub_system)
+        self.notify(pub_sub_system)
