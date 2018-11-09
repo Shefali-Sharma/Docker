@@ -113,7 +113,20 @@
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 crossorigin="anonymous"></script>
 <script>
-
+  $("#notify").click(function(event) {
+    $.ajax({
+      data : {
+      },
+      type : 'POST',
+      url: '/notify',
+      success: function(data) {
+           $("body").load("/notify");
+     }
+    });
+    event.preventDefault();
+  });
+  </script>
+<script>
   $("#subscribe").click(function(event) {
     $.ajax({
       data : {
@@ -128,7 +141,6 @@ crossorigin="anonymous"></script>
   });
 </script>
 <script>
-
   $("#publish").click(function(event) {
     $.ajax({
       data : {
@@ -142,4 +154,5 @@ crossorigin="anonymous"></script>
     event.preventDefault();
   });
   </script>
+  
 </html>

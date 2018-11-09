@@ -42,10 +42,10 @@
             Notify
           </button>
         </div>
-        <div id="topicListDiv" name = "topicList">
+        <div id="pub-sub-list" name = "pubSubList" style="padding: 2em 0 2em 0;">
           <ul class = "list-group">
-            {% for topic in topicsList %}
-              <li class = "list-group-item">{{ topic }}</li>
+            {% for singlePubSub in pubSubsList %}
+              <li class = "list-group-item">{{ singlePubSub }}</li>
             {% endfor %}
           </ul>
         </div>

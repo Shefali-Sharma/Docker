@@ -36,15 +36,19 @@ class PubSubSystem:
         print(self.publishers)
 
     def receive_and_notify(self,publisher,topic):
-#         print(self.topics[topic])
+        res = []
         for val in self.topics[topic]:
-            val.notify(publisher,topic)
+            res.append(val.notify(publisher,topic))
+        return res
+
 
 class Subscriber:
     def __init__(self, name):
         self.name = name
     def notify(self,publisher,topic_content):
         print('{} received "{}" from {}'.format(self.name,topic_content,publisher.name))
+        res = str(self.name) + ' received ' + str(topic_content) + ' from ' + str(publisher.name) 
+        return res
 
 class Publisher:
     def __init__(self, name):
@@ -55,7 +59,7 @@ class Publisher:
         self.topics.add(t)
         
     def publish(self,pub_sub_system,topic):
-        pub_sub_system.receive_and_notify(self,topic)  
+        return pub_sub_system.receive_and_notify(self,topic)  
     
 class Test:
     subCount = 1
@@ -68,7 +72,7 @@ class Test:
         pub_sub_system.add_topic(topics[rand])
         s = Subscriber('S' + str(int(self.subCount)))
         res = 'Subscriber ' + str(s.name) + ' created and subscribed to topic '+ str(topics[rand])
-        pub_sub_system.register_subscribers(s,topics[rand])
+        pub_sub_system.register_subscribers(s,topics[rand]) 
         return res
 
     def publisher_generator(self, pub_sub_system):
@@ -90,9 +94,9 @@ class Test:
             publishers.append(p)
         rand = random.randint(0,len(topics) - 1)
         rand_p = random.randint(0,len(publishers) - 1)
-        print(rand_p)
-        publishers[rand_p].publish(pub_sub_system, topics[rand])
-
+        # print(rand_p)
+        return publishers[rand_p].publish(pub_sub_system, topics[rand])
+        
     # def myMain(self):
     #     pub_sub_system = PubSubSystem()
     #     i = 1
