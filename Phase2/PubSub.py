@@ -51,9 +51,9 @@ class Subscriber:
         return res
 
 class Publisher:
-    def __init__(self, name):
+    def __init__(self, name, topics):
         self.name = name
-        self.topics = set()
+        self.topics = topics
         
     def add_topic(self,t):
         self.topics.add(t)
@@ -78,8 +78,8 @@ class Test:
     def publisher_generator(self, pub_sub_system):
         self.pubCount = self.pubCount + 0.5
         topics = ['TECHNOLOGY', 'SPORTS', 'BUSINESS', 'POLITICS', 'FASHION']
-        p = Publisher('p' + str(int(self.pubCount)))
         rand = random.randint(0,4)
+        p = Publisher('p' + str(int(self.pubCount)), topics[rand])
         pub_sub_system.register_publishers(p,topics[rand])
         res = 'Publisher ' + str(p.name) + ' created for topic '+ str(topics[rand])
         return res
@@ -95,8 +95,8 @@ class Test:
         rand = random.randint(0,len(topics) - 1)
         rand_p = random.randint(0,len(publishers) - 1)
         # print(rand_p)
-        return publishers[rand_p].publish(pub_sub_system, topics[rand])
-        
+        return publishers[rand_p].publish(pub_sub_system, publishers[rand_p].topics)
+
     # def myMain(self):
     #     pub_sub_system = PubSubSystem()
     #     i = 1
