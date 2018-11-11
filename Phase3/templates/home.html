@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="sandbox sandbox-correct-pronounciation">
+  <h1 class="heading heading-correct-pronounciation">
+    Random Topic Generation - Phase 3
+    <em>Multi-Container Docker</em>
+  </h1>
+</div>
+  <div class = "container">
+    <form class="form-default">
+      <div class = "pub-sub-group">
+          <div class = "pubs-created-lbl" style="padding: 10px;">
+              <button id="pubs-created" class = "btn btn-default" >
+                Create Publisher: 
+              </button>
+            </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="choose_topic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Choose Topic
+            </button>
+            <div class="dropdown-menu" aria-labelledby="choose_topic">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+      </div>
+      <div class = "pub-sub-group">
+        <div class = "pubs-created-lbl" style="padding: 10px;">
+          <button id="pubs-created" class = "btn btn-lbl" >
+            {{ pubs_created }}
+            <!-- pubs_created -->
+          </button>
+        </div>
+      </div>
+      <div style="align-self: center; text-align:center;">
+        <div class = "notify-btn">
+          <button id="notify" class = "btn btn-default" type = "submit" >
+            Notify
+          </button>
+        </div>
+        <div id="pub-sub-list" name = "pubSubList" style="padding: 2em 0 2em 0;">
+          <ul class = "list-group">
+            {% for singlePubSub in pubSubsList %}
+              <li class = "list-group-item">{{ singlePubSub }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
