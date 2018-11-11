@@ -10,12 +10,11 @@ def home():
 @app.route('/callback', methods=['POST'])
 def callback():
     src = request.form['srcCode']
-    path = "/Users/shefali9222/Documents/GitHub/Docker/Phase1/app/app.py"
+    path = "/Users/shefali9222/Documents/GitHub/Docker/Phase1/compose/app.py"
     myfile = open(path, "w")
     myfile.write(src)
     myfile.close()
-    print("Here")
-    os.system("sh /Users/shefali9222/Documents/GitHub/Docker/Phase1/app/docker.sh")
+    os.system("sh /Users/shefali9222/Documents/GitHub/Docker/Phase1/compose/docker.sh")
     return render_template('home.html')
 
 @app.route('/about')
@@ -27,4 +26,4 @@ def contact():
     return render_template('contact.html')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=4003, debug = True)
+    app.run(host='0.0.0.0', port=4002, debug = True)
