@@ -110,29 +110,15 @@
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 crossorigin="anonymous"></script>
 <script>
-    $("#notify").click(function(event) {
-      $.ajax({
-        data : {
-        },
-        type : 'POST',
-        url: '/notify',
-        success: function(data) {
-             $("body").load("/notify");
-       }
-      });
-      event.preventDefault();
-    });
-    </script>
-<script>
-  $("#pubs-created").click(function(event) {
+  $("#subs-created").click(function(event) {
     $.ajax({
       data : {
         input: $('#choose_topic').find(":selected").text()
       },
       type : 'POST',
-      url: '/publish',
+      url: '/subscribe',
       success: function(data) {
-           $("body").load("/publish");
+           $("body").load("/subscribe");
      }
     });
     event.preventDefault();

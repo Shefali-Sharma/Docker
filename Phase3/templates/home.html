@@ -4,7 +4,7 @@
 <div class="sandbox sandbox-correct-pronounciation">
   <h1 class="heading heading-correct-pronounciation">
       Multi-Container Docker - Phase 3
-    <em>Publisher</em>
+    <em>Subscriber</em>
   </h1>
 </div>
   <div class = "container">
@@ -12,7 +12,7 @@
       <div class = "pub-sub-group">
           <div class = "form-group" style="padding: 10px;">
               <button class = "btn btn-lbl" >
-                Choose Topic to create Publisher : 
+                Choose Topic to create Subscriber : 
               </button>
             </div>
             <div class="form-group" style="padding:0 2em 0 0;">
@@ -24,46 +24,34 @@
               </select>
             </div>
             <div class="form-group">
-              <button id="pubs-created" class = "btn btn-default" type = "submit">
-                Create Publisher
+              <button id="subs-created" class = "btn btn-default" type = "submit">
+                Create Subscriber
               </button>
             </div>  
       </div>
       <div class = "pub-sub-group" >
-          <div class = "pubs-created-lbl" style="padding: 10px;">
-              <button id="pubs-created" class = "btn btn-lbl" >
-                {{ pubs_created }}
+          <div class = "subs-created-lbl" style="padding: 10px;">
+              <button id="subs-created" class = "btn btn-lbl" >
+                {{ subs_created }}
               </button>
             </div>
       </div>
-
       <div class = "pub-sub-group" >
         <div class="form-group">
-          <button class = "btn btn-lbl" >
-            Choose Topic to Notify :
-          </button>
-        </div>
-        <div class="form-group" style="padding:0 2em 0 0;">
-            <select class="form-control" id="choose_topic_notify">
-              <option value="Politics">Politics</option>
-              <option value="Business">Business</option>
-              <option value="Technology">Technology</option>
-              <option value="Sports">Sports</option>
-            </select>
-          </div>
-        <div class="form-group" >
-          <button id="notify" class = "btn btn-default" type = "submit" >
-            Send Notification
+          <button class = "btn btn-lbl" style="font-family: 'Times New Roman', Times, serif; font-size: xx-large;">
+            Notification Received:
           </button>
         </div>
       </div>
-        <div class = "pub-sub-group" >
-            <div class = "pubs-created-lbl" style="padding: 10px;">
-                <button id="pubs-created" class = "btn btn-lbl" >
-                  {{ notified }}
-                </button>
+      <div class = "pub-sub-group" >
+          <div id="pub-sub-list" name = "pubSubList" style="padding: 2em 0 2em 0;">
+              <ul class = "list-group">
+                {% for singlePubSub in pubSubsList %}
+                  <li class = "list-group-item">{{ singlePubSub }}</li>
+                {% endfor %}
+              </ul>
             </div>
-        </div>
+      </div>
     </form>
   </div>
 
