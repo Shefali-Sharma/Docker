@@ -33,16 +33,13 @@
       }
     .btn-lbl{
       font-size: 20px;
-      font-family: 'Times New Roman', Times, serif;
       background: rgb(74, 76, 78);
-      color: #FCF4D9;
+      color: #eae4ee;
+      font-family: 'Times New Roman', Times, serif;
       height: 50px;
-      width: 350px;
+      width: 100%;
       pointer-events: none;
       cursor: not-allowed;
-      white-space: normal;
-      text-align: left;
-      padding: 0 0 4em 0;
     }
     .form-control{
       padding: 20px;
@@ -112,10 +109,25 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 crossorigin="anonymous"></script>
-<!-- <script>
-  $("#publish").click(function(event) {
+<script>
+    $("#notify").click(function(event) {
+      $.ajax({
+        data : {
+        },
+        type : 'POST',
+        url: '/notify',
+        success: function(data) {
+             $("body").load("/notify");
+       }
+      });
+      event.preventDefault();
+    });
+    </script>
+<script>
+  $("#pubs-created").click(function(event) {
     $.ajax({
       data : {
+        input: $('#choose_topic').find(":selected").text()
       },
       type : 'POST',
       url: '/publish',
@@ -125,6 +137,6 @@ crossorigin="anonymous"></script>
     });
     event.preventDefault();
   });
-  </script> -->
+  </script>
   
 </html>
