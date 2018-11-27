@@ -3,6 +3,6 @@ services:
   web:
     build: .
     ports:
-     - "4001:4001"
+     - "4020:4020"
   redis:
     image: "redis:alpine"

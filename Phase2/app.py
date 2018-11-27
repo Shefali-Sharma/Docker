@@ -42,4 +42,4 @@ def contact():
 if __name__ == '__main__':
     pub_sub_system = PubSub.PubSubSystem()
     test = PubSub.Test()
-    app.run(host="0.0.0.0", port=4001, debug = True)
+    app.run(host="0.0.0.0", port=4020, debug = True)
